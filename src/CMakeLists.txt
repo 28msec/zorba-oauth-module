@@ -13,7 +13,7 @@
 # limitations under the License.
 
 DECLARE_ZORBA_MODULE (URI "http://zorba.io/modules/oauth" VERSION 1.0 FILE "client.xq")
-DECLARE_ZORBA_SCHEMA (URI "http://www.zorba-xquery.com/schemas/oauth/parameters" FILE "parameters.xsd")
-DECLARE_ZORBA_SCHEMA (URI "http://www.zorba-xquery.com/schemas/oauth/service-provider" FILE "service-provider.xsd")
+DECLARE_ZORBA_SCHEMA (URI "http://zorba.io/modules/oauth/parameters" FILE "parameters.xsd")
+DECLARE_ZORBA_SCHEMA (URI "http://zorba.io/modules/oauth/service-provider" FILE "service-provider.xsd")
 
 

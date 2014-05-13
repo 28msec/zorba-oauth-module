@@ -19,9 +19,9 @@ xquery version "3.0";
 (:~
  : This module provides the functions necessary to acquire access to the personal
  : resources of a user through the open standard called
- : <a href="http://oauth.net/" target="_blank">OAuth</a>.<p/>
+ : <a href="http://oauth.net/" target="_blank">OAuth</a>.
  : The application/mashup creator does not need to know the
- : specifics of OAuth to use this module.<p/>
+ : specifics of <a href="http://oauth.net/" target="_blank">OAuth</a> to use this module.
  : @author Stephanie Russell
  : @author <a href="mailto:william.candillon@28msec.com">William Candillon</a>
  : @see <a href="http://oauth.net/" target="_blank">OAuth Website</a>
@@ -30,25 +30,24 @@ xquery version "3.0";
  :)
 module namespace oauth = "http://zorba.io/modules/oauth";
 
-import module namespace ra = "http://www.zorba-xquery.com/modules/random";
-import module namespace hmac = "http://www.zorba-xquery.com/modules/cryptography/hmac#2.0";
+import module namespace ra = "http://zorba.io/modules/random";
+import module namespace hmac = "http://zorba.io/modules/hmac";
 import module namespace http-client = "http://expath.org/ns/http-client";
 import schema namespace http = "http://expath.org/ns/http-client";
 
-import module namespace base64 = "http://www.zorba-xquery.com/modules/converters/base64";
+import module namespace base64 = "http://zorba.io/modules/base64";
 
-import schema namespace sp = "http://www.zorba-xquery.com/schemas/oauth/service-provider";
-import schema namespace p = "http://www.zorba-xquery.com/schemas/oauth/parameters";
+import schema namespace sp = "http://zorba.io/modules/oauth/service-provider";
+import schema namespace p = "http://zorba.io/modules/oauth/parameters";
 
-declare namespace an = "http://www.zorba-xquery.com/annotations";
-declare namespace ver = "http://www.zorba-xquery.com/options/versioning";
-declare namespace op = "http://www.zorba-xquery.com/options/features";
-declare namespace f = "http://www.zorba-xquery.com/features";
+declare namespace an = "http://zorba.io/annotations";
+declare namespace ver = "http://zorba.io/options/versioning";
+declare namespace op = "http://zorba.io/options/features";
+declare namespace f = "http://zorba.io/features";
 
 declare option op:disable "f:trace";
 
 declare option ver:module-version "1.0";
-
 
 (:~
  : Error code for unsupported signing method
@@ -74,9 +73,8 @@ declare %private variable $oauth:SERVER_ERROR as xs:QName :=
 declare %private variable $oauth:UNKNOWN_PARAMETER as xs:QName :=
   xs:QName("oauth:UNKNOWN_PARAMETER");
 
-
 (:~
- : Utility function to build a service provider object.<p/>
+ : Utility function to build a service provider object.
  : This object contains the information required by the 
  : OAuth client to interact with an OAuth service provider.
  : For instance the following expression:
@@ -153,7 +151,7 @@ validate {
 };
 
 (:~
- : Create an OAuth Parameters instance.<p/>
+ : Create an OAuth Parameters instance.
  : Instances of OAuth parameters are used to 
  : contain value/pair data such as <em>oauth_token</em>
  : and <em>oauth_token_secret</em>.
@@ -183,7 +181,7 @@ as element(p:parameters)
 };
 
 (:~
- : Adds an OAuth parameter to an OAuth Parameters instance.<p/>
+ : Adds an OAuth parameter to an OAuth Parameters instance.
  : Instances of OAuth parameters are used to 
  : contain value/pair data such as <em>oauth_token</em>
  : and <em>oauth_token_secret</em>.
@@ -221,7 +219,7 @@ as schema-element(p:parameters)
 };
 
 (:~
- : This function returns the string value of the parameters whose key matches a $string input.<p/>
+ : This function returns the string value of the parameters whose key matches a $string input.
  : Example:
  : <pre class="ace-static" ace-mode="xquery">
  : let $params := oauth:parameters("oauth_token", "token")
@@ -251,7 +249,7 @@ declare function oauth:parameter($params as schema-element(p:parameters), $strin
 };
 
 (:~
- : This function allows the client to obtain a set of temporary credentials from the service provider by making an authenticated HTTP request to the Temporary Credential Request endpoint.<p/>
+ : This function allows the client to obtain a set of temporary credentials from the service provider by making an authenticated HTTP request to the Temporary Credential Request endpoint.
  : This function is provided for convenience for <a href="#request-token-2">request-token#2</a>.
  : Invoking this function is equivalent to:
  : <pre class="ace-static" ace-mode="xquery">
@@ -269,7 +267,7 @@ as schema-element(p:parameters)
 };
 
 (:~
- : This function allows the client to obtain a set of temporary credentials from the service provider by making an authenticated HTTP request to the Temporary Credential Request endpoint.<p/>
+ : This function allows the client to obtain a set of temporary credentials from the service provider by making an authenticated HTTP request to the Temporary Credential Request endpoint.
  : This function is provided for convenience.
  : @see http://tools.ietf.org/html/rfc5849#section-2.1
  : @param $service-provider Information about the service provider
@@ -309,7 +307,7 @@ as schema-element(p:parameters)
 };
 
 (:~
- : This function allows the client to obtain a set of token credentials from the service provider by making an authenticated HTTP request to the Token Request endpoint.<p/>
+ : This function allows the client to obtain a set of token credentials from the service provider by making an authenticated HTTP request to the Token Request endpoint.
  : This function is provided for convenience.
  : @see http://tools.ietf.org/html/rfc5849#section-2.3
  : @param $service-provider Contains service provider information
@@ -352,7 +350,7 @@ as schema-element(p:parameters)
 
 
 (:~
- : This function allows the client access to the protected resources of the user.<p/>
+ : This function allows the client access to the protected resources of the user.
  : This function is provided for convenience.
  : @see http://tools.ietf.org/html/rfc5849#section-3
  : @param $protected-resource (Not schema-validated) http:request element with http method and href.

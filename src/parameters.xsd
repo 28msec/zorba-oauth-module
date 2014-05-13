@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.zorba-xquery.com/schemas/oauth/parameters" xmlns:oauth="http://www.zorba-xquery.com/schemas/oauth/parameters">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://zorba.io/modules/oauth/parameters" xmlns:oauth="http://zorba.io/modules/oauth/parameters">
   <xs:element name="parameters">
     <xs:complexType>
       <xs:sequence>
