@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+MESSAGE(STATUS "")
+MESSAGE(STATUS "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+MESSAGE(STATUS "Configuring external module <oauth>")
+MESSAGE(STATUS "-------------------------------------------------------------")
+MESSAGE(STATUS "")
+
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 PROJECT (zorba_oauth_module)
@@ -41,8 +47,19 @@ ENDIF (NOT SUPPRESS_SECURITY_MODULE_FIND_PACKAGE)
 IF (zorba_html_module_FOUND AND zorba_security_module_FOUND)
   ADD_TEST_DIRECTORY("${PROJECT_SOURCE_DIR}/test")
   ADD_SUBDIRECTORY("src")
+  
+  MESSAGE(STATUS "")
+  MESSAGE(STATUS "-------------------------------------------------------------")
+  MESSAGE(STATUS "Configuration SUCCEEDED for external module <oauth>")
+  
 ELSE ( zorba_html_module_FOUND AND zorba_security_module_FOUND)
   MESSAGE (STATUS "Didn't find Zorba's HTML and Security modules - skipping OAuth module")
+  
+  MESSAGE(STATUS "")
+  MESSAGE(STATUS "-------------------------------------------------------------")  
+  MESSAGE(STATUS "Configuration FAILED for external module <oauth>")
+  
 ENDIF ( zorba_html_module_FOUND AND zorba_security_module_FOUND)
-
 DONE_DECLARING_ZORBA_URIS()
+
+MESSAGE(STATUS "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
